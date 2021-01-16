@@ -6,10 +6,17 @@
   "author": "farhadi.erfan76 <farhadi.erfan76@gmail.com>",
   "license": "MIT",
   "scripts":{
-    "start": "node ./index.js"
+    "dev": "nodemon ./index.js"
   },
   "dependencies": {
     "parse-dashboard": "^2.1.0",
-    "parse-server": "^4.4.0"
+    "parse-server": "^4.4.0",
+    "cookie-parser": "1.4.5",
+    "cors": "2.8.5",
+    "express-session": "1.17.1",
+    "express-validator": "6.9.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.6"
   }
 }

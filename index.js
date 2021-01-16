@@ -9,7 +9,10 @@ var api = new ParseServer({
   appId: 'myAppId',
   masterKey: 'myMasterKey', // Keep this key secret!
   fileKey: 'optionalFileKey',
-  serverURL: 'http://localhost:1337/parse' // Don't forget to change to https if needed
+  serverURL: 'http://localhost:1337/parse', // Don't forget to change to https if needed
+  liveQuery: {
+      classNames: ['Post']
+  }
 });
 
 // Serve the Parse API on the /parse URL prefix
@@ -27,6 +30,7 @@ var dashboard = new ParseDashboard({
 // make the Parse Dashboard available at /dashboard
 app.use('/dashboard', dashboard);
 
-app.listen(1337, function() {
-  console.log('parse-server-example running on port 1337.');
-});
+var port = '1337';
+var httpServer = require('http').createServer(app);
+httpServer.listen(port);
+var parseLiveQueryServer = ParseServer.createLiveQueryServer(httpServer);
